@@ -109,7 +109,6 @@ namespace Portable_Postgres
             //    comboBox1.SelectedIndex = 0;
             //else
             //    comboBox1.SelectedIndex = 1;
-            comboBox1.SelectedIndex = 0;
             // Check if settings file exists
             if (File.Exists(baseDirectory + "\\Settings.xml"))
             {
@@ -220,112 +219,6 @@ namespace Portable_Postgres
                 }
             }
             debug.write("Shown complete.");
-        }
-        /// <summary>
-        /// Group 1 - causes the Postgres database files to be downloaded.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttDownload_Click_1(object sender, EventArgs e)
-        {
-            if (p != null)
-            {
-                error("You cannot redownload the Postgres installation whilst the server is running!");
-                return;
-            }
-            else if (Directory.Exists(baseDirectory + "\\Postgres"))
-                if (MessageBox.Show("An existing installation already exists, you need to delete it to continue the download...", "Existing Installation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.OK)
-                {
-                    try
-                    {
-                        Directory.Delete(baseDirectory + "\\Postgres", true);
-                    }
-                    catch(Exception ex)
-                    {
-                        error("Failed to delete existing installation!", ex);
-                        return;
-                    }
-                }
-                else
-                    return;
-            if (comboBox1.Text.Length == 0)
-                error("You need to select an item to download!");
-            else
-            {
-                try
-                {
-                    NewInstallSettings nis = getInstallSettings(this);
-                    if (nis == null) return; // No install settings provided, procedure cancelled.
-                    if (wb != null)
-                    {
-                        wb.CancelAsync();
-                        wb.Dispose();
-                    }
-                    wb = new WebClient();
-                    wb.DownloadFileCompleted += new AsyncCompletedEventHandler(wb_DownloadFileCompleted);
-                    wb.DownloadProgressChanged += new DownloadProgressChangedEventHandler(wb_DownloadProgressChanged);
-                    wb.DownloadFileAsync(new Uri(comboBox1.Text), baseDirectory + "\\Postgres.zip", nis);
-                    buttDownload.Visible = false;
-                    buttDownloadAbort.Visible = true;
-                    comboBox1.Enabled = false;
-                }
-                catch (Exception ex)
-                {
-                    error("Failed to download the following URL:\r\n'" + comboBox1.Text + "'", ex);
-                }
-            }
-        }
-        /// <summary>
-        /// Invoked then the progress of the Postgres server files download has changed.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void wb_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            statusText.Text = e.BytesReceived + " bytes / " + e.TotalBytesToReceive + " bytes (" + e.ProgressPercentage + "%)";
-            progressBar1.Value = e.ProgressPercentage;
-        }
-        /// <summary>
-        /// Invoked when the download of the Postgres files has been completed.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void  wb_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
-        {
-            buttDownloadAbort.Visible = false;
-            progressBar1.Value = 0;
-            if (e.Cancelled || e.Error != null)
-            {
-                error("Failed to download Postgres!", e.Error);
-                debug.write("Failed to download Postgres!");
-                Invoke((MethodInvoker)delegate()
-                {
-                    controlsEnableDownload();
-                });
-            }
-            else
-            {
-                // Invoke installation thread
-                threadInstallRun((NewInstallSettings)e.UserState);
-            }
-        }
-        /// <summary>
-        /// Group 1 - aborts downloading the Postgres server files.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttDownloadAbort_Click(object sender, EventArgs e)
-        {
-            debug.write("Aborting download...");
-            if (wb != null)
-            {
-                wb.CancelAsync();
-                wb.Dispose();
-                buttDownloadAbort.Visible = false;
-                buttDownload.Visible = true;
-                comboBox1.Enabled = true;
-                progressBar1.Value = 0;
-            }
         }
         /// <summary>
         /// Group 2 - starts the database server.
@@ -666,7 +559,7 @@ namespace Portable_Postgres
             debug.write("Creating database...");
             try
             {
-                ProcessOutput po = new ProcessOutput(baseDirectory + "\\Postgres\\pgsql\\bin\\initdb.exe", "-D \"" + baseDirectory + "\\Postgres\\Database\"");
+                ProcessOutput po = new ProcessOutput(Application.StartupPath + "\\Postgres\\pgsql\\bin\\initdb.exe", "-D \"" + Application.StartupPath + "\\Postgres\\Database\" --locale=\"English_United States.1252\"");
                 po.start(ref debug, "initdb.exe");
                 debug.write("Process for database initialisation launched successfully.");
                 po.proc.WaitForExit();
@@ -835,12 +728,13 @@ namespace Portable_Postgres
             try
             {
                 p = new Process();
-                p.StartInfo.WorkingDirectory = baseDirectory + "\\Postgres\\pgsql\\bin";
+                p.StartInfo.WorkingDirectory = Application.StartupPath + "\\Postgres\\pgsql\\bin";
                 p.StartInfo.FileName = "pg_ctl.exe";
-                p.StartInfo.Arguments = "start -D \"" + baseDirectory + "\\Postgres\\Database" + "\"";
+                p.StartInfo.Arguments = "start -D \"" + Application.StartupPath + "\\Postgres\\Database" + "\"";
                 if (lsHide.Checked) p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
                 p.Start();
+
                 debug.write("Successfully launched Postgres database server process.");
                 // We use invoke in-case the installer is invoking this method from another thread not in-sync with the
                 // controls
@@ -1152,7 +1046,7 @@ namespace Portable_Postgres
         public static NewInstallSettings getInstallSettings(Main m)
         {
             // Grab new settings
-            InstallSettings d = new InstallSettings();
+            FrmInstallSettings d = new FrmInstallSettings();
             d.ShowDialog();
             NewInstallSettings sett = new NewInstallSettings();
             // Check the user entered details
@@ -1201,6 +1095,11 @@ namespace Portable_Postgres
             }
         }
         #endregion
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     /// <summary>
     /// Data structure used to store specified installation settings from the user.
