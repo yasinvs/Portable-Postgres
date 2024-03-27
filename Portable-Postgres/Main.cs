@@ -27,6 +27,7 @@ using System.Threading;
 using System.Xml;
 using Microsoft.Win32;
 using Npgsql;
+using Portable_Postgres.Panels;
 
 namespace Portable_Postgres
 {
@@ -378,7 +379,7 @@ namespace Portable_Postgres
             Invoke((MethodInvoker)delegate()
             {
                 groupLaunch.Visible = true;
-                groupDownload.Visible = false;
+                //groupDownload.Visible = false;
                 debug.write("Showing launch area.");
             });
         }
@@ -389,7 +390,7 @@ namespace Portable_Postgres
         {
             Invoke((MethodInvoker)delegate()
             {
-                groupDownload.Visible = true;
+                //groupDownload.Visible = true;
                 groupLaunch.Visible = false;
                 debug.write("Showing download area.");
             });
@@ -423,7 +424,7 @@ namespace Portable_Postgres
         {
             Invoke((MethodInvoker)delegate()
             {
-                groupDownload.Enabled = true;
+                //groupDownload.Enabled = true;
                 debug.write("Enabled download area.");
             });
         }
@@ -434,7 +435,7 @@ namespace Portable_Postgres
         {
             Invoke((MethodInvoker)delegate()
             {
-                groupDownload.Enabled = false;
+                //groupDownload.Enabled = false;
                 debug.write("Disabled download area.");
             });
         }
@@ -574,26 +575,10 @@ namespace Portable_Postgres
             launchPostgresServer();
             // Attempt to connect to the server continously, with a time-out of 20s; this is to test when the server is up ready for user-role creation
             debug.write("Checking for server response...");
-            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            int tickStart = Environment.TickCount;
-            bool sConnected = false;
-            while (Environment.TickCount - tickStart < 20000 && !sConnected)
-            {
-                try
-                {
-                    s.Connect("127.0.0.1", 5432);
-                    sConnected = true;
-                    s.Disconnect(true);
-                    s = null;
-                }
-                catch { }
-            }
-            if (!sConnected)
-            {
-                debug.write("No response from server; aborting init phase.");
-                error("Failed to connect to Postgrss server for root user-role creation, try wiping the database.");
-                return false;
-            }
+            
+            
+            
+
             // Create root user
             debug.write("Creating root user...");
             try
@@ -615,30 +600,31 @@ namespace Portable_Postgres
             }
             // Now we'll try to connect to the server every 200 m/s, with a time-out of 20s for the database server to start
             debug.write("Attempting to connect to the Postgres server using Npgsql...");
-            tickStart = Environment.TickCount;
-            NpgsqlConnection conn = null;
-            while (Environment.TickCount - tickStart < 20000 && (conn = getDbConnection("127.0.0.1", 5432, "root", string.Empty, "postgres")) == null)
-            {
-                Thread.Sleep(200);
-            }
-            if (conn == null)
-            {
-                debug.write("Failed to connect to Postgres server using Npgsql!");
-                error("Failed to establish connection to database, to create a new user; please wipe the database and try again!");
-                return true; // The base files installed fine, we'll return true
-            }
+            //tickStart = Environment.TickCount;
+
+            //bool 
+
+            //while (Environment.TickCount - tickStart < 20000 && (conn = getDbConnection("127.0.0.1", 5432, "root", string.Empty, "postgres")) == null)
+            //{
+            //    Thread.Sleep(200);
+            //}
+            //if (conn == null)
+            //{
+            //    debug.write("Failed to connect to Postgres server using Npgsql!");
+            //    error("Failed to establish connection to database, to create a new user; please wipe the database and try again!");
+            //    return true; // The base files installed fine, we'll return true
+            //}
             // Check if to create a new user
             if (nis.user != "root")
             {
                 debug.write("Adding user '" + nis.user + "'...");
                 try
                 {
-                    NpgsqlCommand comm = new NpgsqlCommand("CREATE USER \"" + nis.user + "\" WITH PASSWORD '" + nis.pass + "' CREATEDB", conn);
-                    comm.ExecuteNonQuery();
+
                 }
                 catch (Exception ex)
                 {
-                    conn.Close();
+                    //conn.Close();
                     error("Failed to create database user '" + nis.user + "'.", ex);
                     return true; // The base files installed fine, we'll return true
                 }
@@ -649,12 +635,12 @@ namespace Portable_Postgres
                 debug.write("Adding database '" + nis.database + "'...");
                 try
                 {
-                    NpgsqlCommand comm = new NpgsqlCommand("CREATE DATABASE \"" + nis.database + "\"", conn);
-                    comm.ExecuteNonQuery();
+                    //NpgsqlCommand comm = new NpgsqlCommand("CREATE DATABASE \"" + nis.database + "\"", conn);
+                    //comm.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
-                    conn.Close();
+                    //conn.Close();
                     error("Failed to create database '" + nis.database + "'.", ex);
                     return true; // The base files installed fine, we'll return true
                 }
@@ -709,12 +695,7 @@ namespace Portable_Postgres
         void killAllProcesses()
         {
             debug.write("Killing all postgres processes...");
-            try
-            {
-                foreach (Process proc in Process.GetProcessesByName("postgres"))
-                    proc.Kill();
-            }
-            catch { }
+
         }
         /// <summary>
         /// Launches the database server.
@@ -727,13 +708,6 @@ namespace Portable_Postgres
             // Launch db server
             try
             {
-                p = new Process();
-                p.StartInfo.WorkingDirectory = Application.StartupPath + "\\Postgres\\pgsql\\bin";
-                p.StartInfo.FileName = "pg_ctl.exe";
-                p.StartInfo.Arguments = "start -D \"" + Application.StartupPath + "\\Postgres\\Database" + "\"";
-                if (lsHide.Checked) p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-                p.Start();
 
                 debug.write("Successfully launched Postgres database server process.");
                 // We use invoke in-case the installer is invoking this method from another thread not in-sync with the
@@ -922,8 +896,8 @@ namespace Portable_Postgres
             {
                 // Show download group but disable abort and download buttons
                 form.controlsShowDownload();
-                form.buttDownload.Enabled = false;
-                form.buttDownloadAbort.Enabled = false;
+                //form.buttDownload.Enabled = false;
+                //form.buttDownloadAbort.Enabled = false;
                 // Shutdown Postgres server
                 form.stopPostgresServer();
             });
@@ -938,10 +912,10 @@ namespace Portable_Postgres
             form.Invoke((MethodInvoker)delegate()
             {
                 // Enable the download and abort buttons
-                form.buttDownload.Enabled = true;
-                form.buttDownload.Visible = true;
-                form.buttDownloadAbort.Enabled = true;
-                form.comboBox1.Enabled = true;
+                //form.buttDownload.Enabled = true;
+                //form.buttDownload.Visible = true;
+                //form.buttDownloadAbort.Enabled = true;
+                //form.comboBox1.Enabled = true;
             });
 
         }
@@ -986,8 +960,8 @@ namespace Portable_Postgres
         {
             Invoke((MethodInvoker)delegate()
             {
-                statusText.Text = text;
-                installationProgress.Value = installProgress;
+                //statusText.Text = text;
+                //installationProgress.Value = installProgress;
             });
         }
         /// <summary>
@@ -997,8 +971,8 @@ namespace Portable_Postgres
         {
             Invoke((MethodInvoker)delegate()
             {
-                buttDownload.Visible = true;
-                comboBox1.Enabled = true;
+                //buttDownload.Visible = true;
+                //comboBox1.Enabled = true;
             });
         }
         #endregion
@@ -1098,7 +1072,12 @@ namespace Portable_Postgres
 
         private void Main_Load(object sender, EventArgs e)
         {
+            UsrNewInstance usrNewInstance = new UsrNewInstance();
 
+            panel2.Controls.Add(usrNewInstance);
+
+            usrNewInstance.Dock = DockStyle.Fill;
+            usrNewInstance.BringToFront();
         }
     }
     /// <summary>

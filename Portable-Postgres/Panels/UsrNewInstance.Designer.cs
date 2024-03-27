@@ -59,7 +59,6 @@
             this.grpDownload.Name = "grpDownload";
             this.grpDownload.Size = new System.Drawing.Size(808, 159);
             this.grpDownload.TabIndex = 5;
-            this.grpDownload.Visible = false;
             // 
             // pbInstallProcess
             // 

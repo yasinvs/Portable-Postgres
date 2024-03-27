@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\PortableApps\\Portable-Postgres\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{9AF98257-147D-4F1C-AAC5-0EA236EBDE29}|Portable-Postgres\\Portable-Postgres.csproj|d:\\portableapps\\portable-postgres\\portable-postgres\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9AF98257-147D-4F1C-AAC5-0EA236EBDE29}|Portable-Postgres\\Portable-Postgres.csproj|solutionrelative:portable-postgres\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -51,40 +46,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "21b9f29b-84eb-4639-b25d-7cb8d3dc486f",
-        "Display": 1,
-        "X": 42,
-        "Y": -22,
-        "Width": 1496,
-        "Height": 738,
-        "WindowState": 2
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Main.cs",
-              "DocumentMoniker": "D:\\PortableApps\\Portable-Postgres\\Portable-Postgres\\Main.cs",
-              "RelativeDocumentMoniker": "Portable-Postgres\\Main.cs",
-              "ToolTip": "D:\\PortableApps\\Portable-Postgres\\Portable-Postgres\\Main.cs",
-              "RelativeToolTip": "Portable-Postgres\\Main.cs",
-              "ViewState": "AQIAAHEDAAAAAAAAAAAmwGkDAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T09:37:46.376Z",
-              "EditorCaption": ""
             }
           ]
         }

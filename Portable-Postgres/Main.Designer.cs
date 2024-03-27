@@ -62,6 +62,7 @@
             this.linkHelp = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupLaunch.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -495,6 +496,13 @@
     "e 3.0 unported";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(9, 12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(814, 177);
+            this.panel2.TabIndex = 12;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -502,6 +510,7 @@
             this.BackgroundImage = global::Portable_Postgres.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1252, 569);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupLaunch);
             this.Controls.Add(this.versionText);
             this.Controls.Add(this.panel1);
@@ -563,6 +572,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel linkDebug;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 
