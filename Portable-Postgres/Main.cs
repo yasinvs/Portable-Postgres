@@ -845,7 +845,7 @@ namespace Portable_Postgres
             form.debug.write("Extracting server files...");
             try
             {
-                ZipFile f = new ZipFile(form.baseDirectory + "\\Postgres.zip");
+                Ionic.Zip.ZipFile f = new(form.baseDirectory + "\\Postgres.zip");
                 f.ExtractAll(form.baseDirectory + "\\Postgres");
                 f.Dispose();
             }
