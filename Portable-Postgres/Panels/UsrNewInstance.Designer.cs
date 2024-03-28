@@ -28,161 +28,154 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.grpDownload = new System.Windows.Forms.Panel();
-            this.pbInstallProcess = new System.Windows.Forms.ProgressBar();
-            this.lblUrl = new System.Windows.Forms.Label();
-            this.btnAbort = new System.Windows.Forms.Button();
-            this.pbDownloadProcess = new System.Windows.Forms.ProgressBar();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.btnDownload = new System.Windows.Forms.Button();
-            this.lblInfo = new System.Windows.Forms.Label();
-            this.cbUrl = new System.Windows.Forms.ComboBox();
-            this.grpDownload.SuspendLayout();
-            this.SuspendLayout();
+            grpDownload = new System.Windows.Forms.Panel();
+            pbInstallProcess = new System.Windows.Forms.ProgressBar();
+            lblUrl = new System.Windows.Forms.Label();
+            btnAbort = new System.Windows.Forms.Button();
+            pbDownloadProcess = new System.Windows.Forms.ProgressBar();
+            lblTitle = new System.Windows.Forms.Label();
+            lblStatus = new System.Windows.Forms.Label();
+            btnDownload = new System.Windows.Forms.Button();
+            lblInfo = new System.Windows.Forms.Label();
+            cbUrl = new System.Windows.Forms.ComboBox();
+            grpDownload.SuspendLayout();
+            SuspendLayout();
             // 
             // grpDownload
             // 
-            this.grpDownload.BackColor = System.Drawing.Color.Transparent;
-            this.grpDownload.Controls.Add(this.pbInstallProcess);
-            this.grpDownload.Controls.Add(this.lblUrl);
-            this.grpDownload.Controls.Add(this.btnAbort);
-            this.grpDownload.Controls.Add(this.pbDownloadProcess);
-            this.grpDownload.Controls.Add(this.lblTitle);
-            this.grpDownload.Controls.Add(this.lblStatus);
-            this.grpDownload.Controls.Add(this.btnDownload);
-            this.grpDownload.Controls.Add(this.lblInfo);
-            this.grpDownload.Controls.Add(this.cbUrl);
-            this.grpDownload.ForeColor = System.Drawing.Color.White;
-            this.grpDownload.Location = new System.Drawing.Point(4, 4);
-            this.grpDownload.Margin = new System.Windows.Forms.Padding(4);
-            this.grpDownload.Name = "grpDownload";
-            this.grpDownload.Size = new System.Drawing.Size(808, 159);
-            this.grpDownload.TabIndex = 5;
+            grpDownload.BackColor = System.Drawing.Color.Transparent;
+            grpDownload.Controls.Add(pbInstallProcess);
+            grpDownload.Controls.Add(lblUrl);
+            grpDownload.Controls.Add(btnAbort);
+            grpDownload.Controls.Add(pbDownloadProcess);
+            grpDownload.Controls.Add(lblTitle);
+            grpDownload.Controls.Add(lblStatus);
+            grpDownload.Controls.Add(btnDownload);
+            grpDownload.Controls.Add(lblInfo);
+            grpDownload.Controls.Add(cbUrl);
+            grpDownload.ForeColor = System.Drawing.Color.White;
+            grpDownload.Location = new System.Drawing.Point(4, 5);
+            grpDownload.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            grpDownload.Name = "grpDownload";
+            grpDownload.Size = new System.Drawing.Size(808, 199);
+            grpDownload.TabIndex = 5;
             // 
             // pbInstallProcess
             // 
-            this.pbInstallProcess.Location = new System.Drawing.Point(365, 117);
-            this.pbInstallProcess.Margin = new System.Windows.Forms.Padding(4);
-            this.pbInstallProcess.Maximum = 30;
-            this.pbInstallProcess.Name = "pbInstallProcess";
-            this.pbInstallProcess.Size = new System.Drawing.Size(215, 28);
-            this.pbInstallProcess.TabIndex = 7;
+            pbInstallProcess.Location = new System.Drawing.Point(365, 146);
+            pbInstallProcess.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            pbInstallProcess.Name = "pbInstallProcess";
+            pbInstallProcess.Size = new System.Drawing.Size(215, 35);
+            pbInstallProcess.TabIndex = 7;
             // 
             // lblUrl
             // 
-            this.lblUrl.AutoSize = true;
-            this.lblUrl.Location = new System.Drawing.Point(17, 31);
-            this.lblUrl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblUrl.Name = "lblUrl";
-            this.lblUrl.Size = new System.Drawing.Size(37, 16);
-            this.lblUrl.TabIndex = 3;
-            this.lblUrl.Text = "URL:";
+            lblUrl.AutoSize = true;
+            lblUrl.Location = new System.Drawing.Point(17, 39);
+            lblUrl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblUrl.Name = "lblUrl";
+            lblUrl.Size = new System.Drawing.Size(38, 20);
+            lblUrl.TabIndex = 3;
+            lblUrl.Text = "URL:";
             // 
             // btnAbort
             // 
-            this.btnAbort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnAbort.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAbort.FlatAppearance.BorderSize = 0;
-            this.btnAbort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbort.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAbort.Location = new System.Drawing.Point(588, 117);
-            this.btnAbort.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAbort.Name = "btnAbort";
-            this.btnAbort.Size = new System.Drawing.Size(100, 28);
-            this.btnAbort.TabIndex = 6;
-            this.btnAbort.Text = "Abort";
-            this.btnAbort.UseVisualStyleBackColor = false;
-            this.btnAbort.Visible = false;
-            this.btnAbort.Click += new System.EventHandler(this.btnAbort_Click);
+            btnAbort.BackColor = System.Drawing.Color.FromArgb(224, 224, 224);
+            btnAbort.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnAbort.FlatAppearance.BorderSize = 0;
+            btnAbort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAbort.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            btnAbort.Location = new System.Drawing.Point(588, 146);
+            btnAbort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnAbort.Name = "btnAbort";
+            btnAbort.Size = new System.Drawing.Size(100, 35);
+            btnAbort.TabIndex = 6;
+            btnAbort.Text = "Abort";
+            btnAbort.UseVisualStyleBackColor = false;
+            btnAbort.Visible = false;
+            btnAbort.Click += btnAbort_Click;
             // 
             // pbDownloadProcess
             // 
-            this.pbDownloadProcess.Location = new System.Drawing.Point(9, 81);
-            this.pbDownloadProcess.Margin = new System.Windows.Forms.Padding(4);
-            this.pbDownloadProcess.Name = "pbDownloadProcess";
-            this.pbDownloadProcess.Size = new System.Drawing.Size(787, 28);
-            this.pbDownloadProcess.TabIndex = 0;
+            pbDownloadProcess.Location = new System.Drawing.Point(9, 101);
+            pbDownloadProcess.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            pbDownloadProcess.Name = "pbDownloadProcess";
+            pbDownloadProcess.Size = new System.Drawing.Size(787, 35);
+            pbDownloadProcess.TabIndex = 0;
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(9, 4);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(172, 20);
-            this.lblTitle.TabIndex = 7;
-            this.lblTitle.Text = "Download Postgres";
+            lblTitle.AutoSize = true;
+            lblTitle.BackColor = System.Drawing.Color.Transparent;
+            lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblTitle.ForeColor = System.Drawing.Color.White;
+            lblTitle.Location = new System.Drawing.Point(9, 5);
+            lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new System.Drawing.Size(172, 20);
+            lblTitle.TabIndex = 7;
+            lblTitle.Text = "Download Postgres";
             // 
             // lblStatus
             // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(9, 123);
-            this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(29, 16);
-            this.lblStatus.TabIndex = 5;
-            this.lblStatus.Text = "Idle";
+            lblStatus.AutoSize = true;
+            lblStatus.Location = new System.Drawing.Point(9, 154);
+            lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new System.Drawing.Size(34, 20);
+            lblStatus.TabIndex = 5;
+            lblStatus.Text = "Idle";
             // 
             // btnDownload
             // 
-            this.btnDownload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnDownload.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDownload.FlatAppearance.BorderSize = 0;
-            this.btnDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDownload.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnDownload.Location = new System.Drawing.Point(696, 117);
-            this.btnDownload.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDownload.Name = "btnDownload";
-            this.btnDownload.Size = new System.Drawing.Size(100, 28);
-            this.btnDownload.TabIndex = 1;
-            this.btnDownload.Text = "Download";
-            this.btnDownload.UseVisualStyleBackColor = false;
-            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
+            btnDownload.BackColor = System.Drawing.Color.FromArgb(224, 224, 224);
+            btnDownload.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnDownload.FlatAppearance.BorderSize = 0;
+            btnDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnDownload.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            btnDownload.Location = new System.Drawing.Point(696, 146);
+            btnDownload.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            btnDownload.Name = "btnDownload";
+            btnDownload.Size = new System.Drawing.Size(100, 35);
+            btnDownload.TabIndex = 1;
+            btnDownload.Text = "Download";
+            btnDownload.UseVisualStyleBackColor = false;
+            btnDownload.Click += btnDownload_Click;
             // 
             // lblInfo
             // 
-            this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(17, 59);
-            this.lblInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(462, 16);
-            this.lblInfo.TabIndex = 4;
-            this.lblInfo.Text = "-- Select the first item for 32-bit Windows or the second item for 64-bit Windows" +
-    "";
+            lblInfo.AutoSize = true;
+            lblInfo.Location = new System.Drawing.Point(17, 74);
+            lblInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblInfo.Name = "lblInfo";
+            lblInfo.Size = new System.Drawing.Size(545, 20);
+            lblInfo.TabIndex = 4;
+            lblInfo.Text = "-- Select the first item for 32-bit Windows or the second item for 64-bit Windows";
             // 
             // cbUrl
             // 
-            this.cbUrl.FormattingEnabled = true;
-            this.cbUrl.Items.AddRange(new object[] {
-            "http://get.enterprisedb.com/postgresql/postgresql-8.4.16-1-windows-binaries.zip",
-            "http://get.enterprisedb.com/postgresql/postgresql-9.2.1-1-windows-binaries.zip",
-            "http://get.enterprisedb.com/postgresql/postgresql-9.2.1-1-windows-x64-binaries.zi" +
-                "p",
-            "(enter your own)"});
-            this.cbUrl.Location = new System.Drawing.Point(68, 27);
-            this.cbUrl.Margin = new System.Windows.Forms.Padding(4);
-            this.cbUrl.Name = "cbUrl";
-            this.cbUrl.Size = new System.Drawing.Size(727, 24);
-            this.cbUrl.TabIndex = 2;
+            cbUrl.FormattingEnabled = true;
+            cbUrl.Items.AddRange(new object[] { "http://get.enterprisedb.com/postgresql/postgresql-8.4.16-1-windows-binaries.zip", "http://get.enterprisedb.com/postgresql/postgresql-9.2.1-1-windows-binaries.zip", "http://get.enterprisedb.com/postgresql/postgresql-9.2.1-1-windows-x64-binaries.zip", "(enter your own)" });
+            cbUrl.Location = new System.Drawing.Point(68, 34);
+            cbUrl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            cbUrl.Name = "cbUrl";
+            cbUrl.Size = new System.Drawing.Size(727, 28);
+            cbUrl.TabIndex = 2;
             // 
             // UsrNewInstance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Portable_Postgres.Properties.Resources.background;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.grpDownload);
-            this.Name = "UsrNewInstance";
-            this.Size = new System.Drawing.Size(815, 167);
-            this.Load += new System.EventHandler(this.UsrNewInstance_Load);
-            this.grpDownload.ResumeLayout(false);
-            this.grpDownload.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.background;
+            BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            Controls.Add(grpDownload);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "UsrNewInstance";
+            Size = new System.Drawing.Size(815, 209);
+            Load += UsrNewInstance_Load;
+            grpDownload.ResumeLayout(false);
+            grpDownload.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

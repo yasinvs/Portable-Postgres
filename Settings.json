@@ -1,23 +1,19 @@
 {
-    "DownloadLinks": [
-        "https://get.enterprisedb.com/postgresql/postgresql-16.2-1-windows-x64-binaries.zip",
-        "https://get.enterprisedb.com/postgresql/postgresql-15.6-1-windows-x64-binaries.zip",
-        "https://get.enterprisedb.com/postgresql/postgresql-14.11-1-windows-x64-binaries.zip",
-        "https://get.enterprisedb.com/postgresql/postgresql-13.14-1-windows-x64-binaries.zip",
-        "https://get.enterprisedb.com/postgresql/postgresql-12.18-1-windows-x64-binaries.zip"
-    ],
-    "DbSettings" : [
-        {
-            "Path": ".\\Database",
-            "Version": "",
-            "Database": "postgres",
-            "Username": "sa",
-            "Password": "Mayki@043434"
-        }
-    ],
-    "ApplicationSettings": {
-        "ClientPath": "",
-        "Automatically_Launch_Database": false,
-        "Hide_Server_Window": false
-    }
+  "DownloadLinks": [
+    "https://get.enterprisedb.com/postgresql/postgresql-16.2-1-windows-x64-binaries.zip",
+    "https://get.enterprisedb.com/postgresql/postgresql-15.6-1-windows-x64-binaries.zip",
+    "https://get.enterprisedb.com/postgresql/postgresql-14.11-1-windows-x64-binaries.zip",
+    "https://get.enterprisedb.com/postgresql/postgresql-13.14-1-windows-x64-binaries.zip",
+    "https://get.enterprisedb.com/postgresql/postgresql-12.18-1-windows-x64-binaries.zip"
+  ],
+  "DbSettings": {
+    "Database": "postgres",
+    "Username": "sa",
+    "Password": "Mayki@043434"
+  },
+  "ApplicationSettings": {
+    "ClientPath": "",
+    "Automatically_Launch_Database": false,
+    "Hide_Server_Window": false
+  }
 }

@@ -5,6 +5,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{9AF98257-147D-4F1C-AAC5-0EA236EBDE29}|Portable-Postgres\\Portable-Postgres.csproj|d:\\portableapps\\portable-postgres\\portable-postgres\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9AF98257-147D-4F1C-AAC5-0EA236EBDE29}|Portable-Postgres\\Portable-Postgres.csproj|solutionrelative:portable-postgres\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AF98257-147D-4F1C-AAC5-0EA236EBDE29}|Portable-Postgres\\Portable-Postgres.csproj|d:\\portableapps\\portable-postgres\\portable-postgres\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9AF98257-147D-4F1C-AAC5-0EA236EBDE29}|Portable-Postgres\\Portable-Postgres.csproj|solutionrelative:portable-postgres\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AF98257-147D-4F1C-AAC5-0EA236EBDE29}|Portable-Postgres\\Portable-Postgres.csproj|d:\\portableapps\\portable-postgres\\portable-postgres\\panels\\usrcontrolpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9AF98257-147D-4F1C-AAC5-0EA236EBDE29}|Portable-Postgres\\Portable-Postgres.csproj|solutionrelative:portable-postgres\\panels\\usrcontrolpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9AF98257-147D-4F1C-AAC5-0EA236EBDE29}|Portable-Postgres\\Portable-Postgres.csproj|d:\\portableapps\\portable-postgres\\portable-postgres\\panels\\usrcontrolpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9AF98257-147D-4F1C-AAC5-0EA236EBDE29}|Portable-Postgres\\Portable-Postgres.csproj|solutionrelative:portable-postgres\\panels\\usrcontrolpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,12 +70,49 @@
               "Title": "Main.cs",
               "DocumentMoniker": "D:\\PortableApps\\Portable-Postgres\\Portable-Postgres\\Main.cs",
               "RelativeDocumentMoniker": "Portable-Postgres\\Main.cs",
-              "ToolTip": "D:\\PortableApps\\Portable-Postgres\\Portable-Postgres\\Main.cs*",
-              "RelativeToolTip": "Portable-Postgres\\Main.cs*",
-              "ViewState": "AQIAAEADAAAAAAAAAAApwEwDAAAiAAAA",
+              "ToolTip": "D:\\PortableApps\\Portable-Postgres\\Portable-Postgres\\Main.cs",
+              "RelativeToolTip": "Portable-Postgres\\Main.cs",
+              "ViewState": "AQIAANkAAAAAAAAAAAAtwOEAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T14:18:15.1Z",
+              "WhenOpened": "2024-03-28T13:16:34.667Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Main.cs [Design]",
+              "DocumentMoniker": "D:\\PortableApps\\Portable-Postgres\\Portable-Postgres\\Main.cs",
+              "RelativeDocumentMoniker": "Portable-Postgres\\Main.cs",
+              "ToolTip": "D:\\PortableApps\\Portable-Postgres\\Portable-Postgres\\Main.cs [Design]",
+              "RelativeToolTip": "Portable-Postgres\\Main.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-28T13:16:33.113Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsrControlPanel.cs",
+              "DocumentMoniker": "D:\\PortableApps\\Portable-Postgres\\Portable-Postgres\\Panels\\UsrControlPanel.cs",
+              "RelativeDocumentMoniker": "Portable-Postgres\\Panels\\UsrControlPanel.cs",
+              "ToolTip": "D:\\PortableApps\\Portable-Postgres\\Portable-Postgres\\Panels\\UsrControlPanel.cs",
+              "RelativeToolTip": "Portable-Postgres\\Panels\\UsrControlPanel.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAlwDUAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-28T13:14:01.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsrControlPanel.cs [Design]",
+              "DocumentMoniker": "D:\\PortableApps\\Portable-Postgres\\Portable-Postgres\\Panels\\UsrControlPanel.cs",
+              "RelativeDocumentMoniker": "Portable-Postgres\\Panels\\UsrControlPanel.cs",
+              "ToolTip": "D:\\PortableApps\\Portable-Postgres\\Portable-Postgres\\Panels\\UsrControlPanel.cs [Design]",
+              "RelativeToolTip": "Portable-Postgres\\Panels\\UsrControlPanel.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-28T12:45:58.43Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

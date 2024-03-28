@@ -121,8 +121,8 @@ namespace Portable_Postgres.Panels
 
             dbSettings = frmInstallSettings.dbSettings;
 
-            var a = SerializerHelper.Serialize(dbSettings, SerializeFormat.JSON);
-            File.WriteAllText(Application.StartupPath + "\\dbsettings.json", a);
+            var serializeJson = SerializerHelper.Serialize(dbSettings, SerializeFormat.JSON);
+            File.WriteAllText(Application.StartupPath + "\\dbsettings.json", serializeJson);
 
             if (webClient != null)
             {
@@ -134,11 +134,18 @@ namespace Portable_Postgres.Panels
             btnAbort.Visible = true;
             cbUrl.Enabled = false;
 
-            //await DownloadFileAsync(cbUrl.Text);
+            if (!File.Exists(Application.StartupPath + "\\Postgres.zip"))
+            {
+                lblStatus.Text = "Downloading Postgres...";
+                await DownloadFileAsync(cbUrl.Text);
+            }
 
             pbInstallProcess.Value = 15;
             lblStatus.Text = "Extracting Postgres...";
             await ExtractZipFileAsync(Application.StartupPath + "\\Postgres.zip");
+
+            pbInstallProcess.Value = 75;
+            lblStatus.Text = "Initializing Database...";
 
             DotNetProcessStartManager.ProcessStart(new ProcessStart()
             {
@@ -150,8 +157,9 @@ namespace Portable_Postgres.Panels
 
             PostgresServer.KillServer();
             PostgresServer.StartServer();
-            bool checkServer = PostgresServer.CheckServer();
 
+
+            //bool checkServer = PostgresServer.CheckServer();
             Socket socket = PostgresServer.ConnectServer();
 
             DotNetProcessStartManager.ProcessStart(new ProcessStart()
@@ -162,11 +170,19 @@ namespace Portable_Postgres.Panels
                 WaitProcess = true
             });
 
-            if (checkServer)
+            conn = PostgresServer.GetNpgsqlConnection("postgres", "127.0.0.1", "5432", "root", string.Empty);
+            await conn.OpenAsync();
+
+            if (conn != null)
             {
-                NpgsqlCommand comm = new NpgsqlCommand($"CREATE USER root WITH PASSWORD \"\" CREATEDB", conn);
-                comm.ExecuteNonQuery();
+                NpgsqlCommand comm = new NpgsqlCommand($"CREATE USER {dbSettings.Username} WITH PASSWORD '{dbSettings.Password}' CREATEDB", conn);
+                await comm.ExecuteNonQueryAsync();
             }
+
+            //if (checkServer)
+            //{
+
+            //}
 
             btnDownload.Visible = true;
             btnAbort.Visible = false;

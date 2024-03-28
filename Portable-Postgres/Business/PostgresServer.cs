@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Npgsql;
 using Portable_Postgres.Entities;
 
 namespace Portable_Postgres.Business
@@ -36,6 +37,20 @@ namespace Portable_Postgres.Business
                     proc.Kill();
             }
             catch { }
+        }
+
+        public static NpgsqlConnection GetNpgsqlConnection(string database, string ip, string port, string userName, string password)
+        {
+            NpgsqlConnection conn = new NpgsqlConnection($"Server={ip};Port={port};User Id={userName};Password={password};Database={database};");
+            conn.Open();
+
+            if (conn.State == System.Data.ConnectionState.Open)
+            {
+                conn.Close();
+                return conn;
+            }
+
+            return null;
         }
 
         public static bool CheckServer()

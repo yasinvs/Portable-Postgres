@@ -28,6 +28,9 @@ using System.Xml;
 using Microsoft.Win32;
 using Npgsql;
 using Portable_Postgres.Panels;
+using Portable_Postgres.Business;
+using Portable_Postgres.Entities;
+using Portable_Postgres.Helper;
 
 namespace Portable_Postgres
 {
@@ -220,34 +223,6 @@ namespace Portable_Postgres
                 }
             }
             debug.write("Shown complete.");
-        }
-        /// <summary>
-        /// Group 2 - starts the database server.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lsStart_Click(object sender, EventArgs e)
-        {
-            launchPostgresServer();
-        }
-        /// <summary>
-        /// Group 2 - stops the database server.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lsStop_Click(object sender, EventArgs e)
-        {
-            stopPostgresServer();
-        }
-        /// <summary>
-        /// Group 2 - restarts the database server.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lsRestart_Click(object sender, EventArgs e)
-        {
-            stopPostgresServer();
-            launchPostgresServer();
         }
         /// <summary>
         /// Group 2 - wipes the database.
@@ -704,7 +679,8 @@ namespace Portable_Postgres
         {
             if (p != null) return;
             // Kill any processes running
-            killAllProcesses();
+            PostgresServer.KillServer();
+            PostgresServer.ConnectServer();
             // Launch db server
             try
             {
@@ -928,7 +904,7 @@ namespace Portable_Postgres
             // Disable launch group
             form.controlsDisableLaunch();
             // Grab settings
-            NewInstallSettings nis = getInstallSettings(form);
+            //NewInstallSettings nis = getInstallSettings(form);
             if (nis == null)
             {
                 form.controlsEnableLaunch();
@@ -1070,23 +1046,49 @@ namespace Portable_Postgres
         }
         #endregion
 
+
+        Root root;
+
         private void Main_Load(object sender, EventArgs e)
         {
-            UsrNewInstance usrNewInstance = new UsrNewInstance();
+            if (!File.Exists($"{Application.StartupPath}\\Settings.json"))
+            {
+                root = new();
+                root.ApplicationSettings = new()
+                {
+                    Hide_Server_Window = true,
+                    Automatically_Launch_Database = false,
+                    ClientPath = Application.StartupPath
+                };
 
-            panel2.Controls.Add(usrNewInstance);
+                root.DbSettings = new();
 
-            usrNewInstance.Dock = DockStyle.Fill;
-            usrNewInstance.BringToFront();
+                var serializeJson = SerializerHelper.Serialize<Root>(root, SerializeFormat.JSON);
+
+                File.WriteAllText($"{Application.StartupPath}\\Settings.json", serializeJson);
+            }
+            else
+            {
+                root = SerializerHelper.Deserialize<Root>(File.ReadAllText($"{Application.StartupPath}\\Settings.json"), SerializeFormat.JSON);
+            }
+
+            if (!Directory.Exists(Application.StartupPath + "\\Postgres\\pgsql"))
+            {
+                UsrNewInstance usrNewInstance = new();
+                panel2.Controls.Add(usrNewInstance);
+                usrNewInstance.Dock = DockStyle.Fill;
+                usrNewInstance.BringToFront();
+            }
+            else
+            {
+                UsrControlPanel usrControlPanel = new();
+                panel2.Controls.Add(usrControlPanel);
+                usrControlPanel.Dock = DockStyle.Fill;
+                usrControlPanel.BringToFront();
+            }
         }
     }
-    /// <summary>
-    /// Data structure used to store specified installation settings from the user.
-    /// </summary>
-    public class NewInstallSettings
-    {
-        public string database, user, pass;
-    }
+
     public class ProcessOutput
     {
         public Process proc;
